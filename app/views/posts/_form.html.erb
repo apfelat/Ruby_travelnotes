@@ -24,4 +24,10 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+ <%= form.label(:public, for: nil, class:'post-status__label') do %>
+      <label><%= form.radio_button :status, :public %> 公開 </label>
+  <% end %>
+  <%= form.label(:private, for: nil, class:'post-status__label') do %>
+      <label><%= form.radio_button :status, :private %> 非公開 </label>
+  <% end %>
 <% end %>

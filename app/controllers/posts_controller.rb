@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   def index
-    @posts = current_user.posts
+    @posts = Post.all
   end
 
   # GET /posts/1
@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     else
       @status = false
     end
+    redirect_to(posts_url)
   end
 
   # PATCH/PUT /posts/1
@@ -38,11 +39,13 @@ class PostsController < ApplicationController
     else
       @status = false
     end
+    redirect_to(posts_url)
   end
 
   # DELETE /posts/1
   def destroy
     @post.destroy
+    redirect_to(posts_url)
   end
 
   private
