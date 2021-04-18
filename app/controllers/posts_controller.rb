@@ -9,6 +9,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
+     if @post.status_private? && @post.user != current_user
+      respond_to do |format|
+        format.html { redirect_to posts_path, notice: 'このページにはアクセスできません' }
+      end
+     end
   end
 
   # GET /posts/new
@@ -23,7 +28,7 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = current_user.posts.new(post_params)
-
+    @post.user_id = current_user.id
     if @post.save
       @status = true
     else
@@ -55,6 +60,12 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(
+        :title,
+        :content,
+        :image,
+        :status, # <= 追加：statusカラム
+        {:cat_ids => []}
+      )
     end
 end
