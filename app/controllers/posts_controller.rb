@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
+    @posts = Post.where(status:1).order(created_at: :desc)
   end
 
   # GET /posts/1
@@ -51,6 +51,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to(posts_url)
+  end
+  
+  def private_index
+    @posts = current_user.posts.where(status:0).order(created_at: :desc)
   end
 
   private
