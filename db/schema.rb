@@ -40,9 +40,7 @@ ActiveRecord::Schema.define(version: 2021_05_01_070935) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "memo"
-    t.integer "prefecture_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
