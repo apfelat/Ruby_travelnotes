@@ -69,7 +69,8 @@ class PostsController < ApplicationController
         :content,
         :image,
         :status, # <= 追加：statusカラム
-        {:cat_ids => []}
+        {:cat_ids => []},
+        :prefecture_id
       )
     end
 end

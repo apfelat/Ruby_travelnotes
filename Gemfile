@@ -69,3 +69,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  gem 'devise', '~> 4.2'
  
  gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
+ 
+ 	
+  gem 'seed-fu'
