@@ -67,7 +67,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(
         :title,
         :content,
-        :image,
+        :picture,
         :status, # <= 追加：statusカラム
         {:cat_ids => []},
         :prefecture_id

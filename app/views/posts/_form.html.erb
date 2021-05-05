@@ -23,7 +23,7 @@
 
 <%= form.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい' %>
 
-  <%= form.file_field :image %>
+  <%= form.file_field :picture %>
   <%= form.submit 'アップロードする'%>
 
   <div class="actions">
