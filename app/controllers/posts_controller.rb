@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.where(status:1).order(created_at: :desc)
+  @posts = params[:prefecture_id].present? ? Prefecture.find(params[:prefecture_id]).posts.where(status:1).order(created_at: :desc) : Post.where(status:1).order(created_at: :desc)
   end
 
   # GET /posts/1

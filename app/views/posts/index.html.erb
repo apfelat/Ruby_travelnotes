@@ -17,6 +17,8 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
+        <td><% if post.image? %>
+        <%= image_tag post.image.to_s, size: '320x240' %></td><% end %>
         <td><%= post.prefecture.name if post.prefecture_id? %></td>
         <% if user_signed_in? && post.user_id == current_user.id %>
         <td><%= link_to 'Show', post %></td>
